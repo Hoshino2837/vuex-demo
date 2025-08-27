@@ -1,17 +1,38 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <RouterLink to="/">home</RouterLink>|
+  <RouterLink to="/about">about</RouterLink>
+  <RouterView/>
+  <hr></hr>
+  <button @click="countAdd">+1</button>
+  <button @click="countDec">-1</button>
+  <div> counter= {{ $store.state.counter }}</div>
+  <div> {{ $store.getters.getCount }}</div>
+  <p> {{ getCount }}</p>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HelloWorld from './components/HelloWorld.vue';
+import { mapGetters, mapState } from 'vuex';
 export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  computed: {
+    ...mapGetters(["getCount"])
+  },
+  methods:{
+    countAdd(){
+      this.$store.commit("addCount",1)
+    },
+    countDec(){
+      this.$store.commit("decCount",1)
+    }
   }
 }
+
 </script>
 
 <style>
