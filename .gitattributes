@@ -1,1 +1,4 @@
+# 让 .vue 文件强制识别为 Vue（覆盖默认逻辑）
 *.vue linguist-language=vue
+# 若想忽略某些 JS 文件对语言统计的影响，可标记为 vendored（不计入统计）
+src/vendor/*.js linguist-vendored
