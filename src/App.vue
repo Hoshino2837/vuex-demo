@@ -14,18 +14,19 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState,mapMutations } from 'vuex';
 export default {
   name: 'App',
   components: {
     HelloWorld
   },
   computed: {
-    ...mapGetters(["getCount"])
+    ...mapGetters(["getCount"]),
   },
   methods:{
+     ...mapMutations(["addCount"]),
     countAdd(){
-      this.$store.commit("addCount",1)
+      this.addCount(1)
     },
     countDec(){
       this.$store.commit("decCount",1)
